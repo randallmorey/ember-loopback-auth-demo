@@ -1,7 +1,8 @@
 # ember-loopback-auth-demo
 [![Travis](https://img.shields.io/travis/randallmorey/ember-loopback-auth-demo.svg?style=flat-square)](https://travis-ci.org/randallmorey/ember-loopback-auth-demo)
 [![Coveralls](https://img.shields.io/coveralls/randallmorey/ember-loopback-auth-demo.svg?style=flat-square)](https://coveralls.io/github/randallmorey/ember-loopback-auth-demo)
-[![David](https://img.shields.io/david/dev/strongloop/express.svg?style=flat-square)](https://github.com/randallmorey/ember-loopback-auth-demo)
+[![David](https://img.shields.io/david/dev/strongloop/express.svg?colorB=green&style=flat-square)](https://github.com/randallmorey/ember-loopback-auth-demo)
+[![Inline docs](https://inch-ci.org/github/randallmorey/ember-loopback-auth-demo.svg?branch=master&style=flat-square)](http://inch-ci.org/github/randallmorey/ember-loopback-auth-demo)
 [![Ember 2.11.1+](https://img.shields.io/badge/ember-2.11.1+-blue.svg?style=flat-square)](https://github.com/ember-cli/ember-cli/tree/v2.11.1)
 
 This README outlines the details of collaborating on this Ember application.

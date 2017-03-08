@@ -1,11 +1,11 @@
-{
+ {
   "name": "ember-loopback-auth-demo",
   "version": "0.0.0",
   "description": "Small description for ember-loopback-auth-demo goes here",
   "license": "MIT",
   "author": "",
   "directories": {
-    "doc": "doc",
+    "docs": "docs",
     "test": "tests"
   },
   "repository": "",
@@ -51,6 +51,5 @@
   },
   "engines": {
     "node": ">= 0.12.0"
-  },
-  "private": true
+  }
 }

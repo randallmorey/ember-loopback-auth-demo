@@ -3,10 +3,9 @@ import moduleForAcceptance from 'ember-loopback-auth-demo/tests/helpers/module-f
 
 moduleForAcceptance('Acceptance | application');
 
-test('visiting /', function(assert) {
+test('visiting /', function (assert) {
   visit('/');
-
-  andThen(function() {
+  andThen(function () {
     assert.equal(currentURL(), '/');
   });
 });

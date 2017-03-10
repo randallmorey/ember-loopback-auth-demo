@@ -1,4 +1,4 @@
- {
+{
   "name": "ember-loopback-auth-demo",
   "version": "0.0.0",
   "description": "Small description for ember-loopback-auth-demo goes here",
@@ -41,6 +41,7 @@
     "ember-exam": "0.6.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.6.0",
+    "ember-model-validator": "2.10.0",
     "ember-resolver": "^2.0.3",
     "ember-source": "~2.11.0",
     "ember-welcome-page": "^2.0.2",

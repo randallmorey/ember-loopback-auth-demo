@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'ember-loopback-auth-demo',
     environment: environment,
@@ -17,6 +17,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    api: {
+      host: 'http://0.0.0.0:3000',
+      namespace: 'api'
     }
   };
 

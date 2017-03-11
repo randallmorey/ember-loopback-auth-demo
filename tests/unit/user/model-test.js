@@ -78,51 +78,7 @@ test('it fails validation if password is too short', function (assert) {
     model.set('password', 'Ab12+');
     assert.notOk(model.validate());
     const errors = model.get('errors').errorsFor('password');
-    assert.equal(errors[0].message[0], 'is too short (minimum is 8 characters)');
-  });
-});
-
-test('it fails validation if password is missing an upper case character', function (assert) {
-  const model = this.subject();
-  // let store = this.store();
-  run(() => {
-    model.set('password', 'abcd1234+++');
-    assert.notOk(model.validate());
-    const errors = model.get('errors').errorsFor('password');
-    assert.equal(errors[0].message[0], 'must include an upper case character');
-  });
-});
-
-test('it fails validation if password is missing a lower case character', function (assert) {
-  const model = this.subject();
-  // let store = this.store();
-  run(() => {
-    model.set('password', 'ABCD1234+++');
-    assert.notOk(model.validate());
-    const errors = model.get('errors').errorsFor('password');
-    assert.equal(errors[0].message[0], 'must include a lower case character');
-  });
-});
-
-test('it fails validation if password is missing a number', function (assert) {
-  const model = this.subject();
-  // let store = this.store();
-  run(() => {
-    model.set('password', 'ABCDabcd+++');
-    assert.notOk(model.validate());
-    const errors = model.get('errors').errorsFor('password');
-    assert.equal(errors[0].message[0], 'must include a number');
-  });
-});
-
-test('it fails validation if password is missing a special character', function (assert) {
-  const model = this.subject();
-  // let store = this.store();
-  run(() => {
-    model.set('password', 'ABCDabcd123');
-    assert.notOk(model.validate());
-    const errors = model.get('errors').errorsFor('password');
-    assert.equal(errors[0].message[0], 'must include one of these special characters: -+_!@#$%^&*.,?()');
+    assert.equal(errors[0].message[0], 'is too short (minimum is 10 characters)');
   });
 });
 

@@ -44,12 +44,8 @@ export default Model.extend(Validator, {
     },
     password: {
       presence: true,
-      mustContainCapital: true,
-      mustContainLower: true,
-      mustContainNumber: true,
-      mustContainSpecial: true,
       length: {
-        minimum: 8
+        minimum: 10
       }
     },
     passwordConfirmation: {

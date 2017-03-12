@@ -64,9 +64,14 @@ export default Model.extend(Validator, {
         minimum: 10
       },
       custom: {
+        // Strength is scored on a scale 0 - 4.
+        // Password is valid if score is 2 or greater.
         validation(key, value, model) {
           return (model.get('passwordStrength.score') || 0) > 1;
         },
+        // Strength report includes plain-English recommendations for improving
+        // passwords.  These recommendations are returned as the validation
+        // error message.
         message(key, value, model) {
           if (value) {
             const {

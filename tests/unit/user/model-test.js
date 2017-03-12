@@ -20,8 +20,8 @@ test('it passes validation if validations are satisfied', function (assert) {
   run(() => {
     model.set('email', 'test@foo.com');
     model.set('emailConfirmation', 'test@foo.com');
-    model.set('password', '1234ABcd++');
-    model.set('passwordConfirmation', '1234ABcd++');
+    model.set('password', 'this password is good enough');
+    model.set('passwordConfirmation', 'this password is good enough');
     assert.ok(model.validate());
   });
 });
@@ -82,12 +82,23 @@ test('it fails validation if password is too short', function (assert) {
   });
 });
 
+test('it fails validation if password is not strong enough', function (assert) {
+  const model = this.subject();
+  // let store = this.store();
+  run(() => {
+    model.set('password', 'abcdefghijkl');
+    assert.notOk(model.validate());
+    const errors = model.get('errors').errorsFor('password');
+    assert.equal(errors[0].message[0], 'Sequences like abc or 6543 are easy to guess. Add another word or two. Uncommon words are better. Avoid sequences');
+  });
+});
+
 test('it fails validation if passwordConfirmation does not match password', function (assert) {
   const model = this.subject();
   // let store = this.store();
   run(() => {
-    model.set('password', '12345ABcd++');
-    model.set('passwordConfirmation', 'ABcd1234--');
+    model.set('password', 'this password is good enough');
+    model.set('passwordConfirmation', 'this password is good enough, but different');
     assert.notOk(model.validate());
     const errors = model.get('errors').errorsFor('passwordConfirmation');
     assert.equal(errors[0].message[0], 'must match Password');

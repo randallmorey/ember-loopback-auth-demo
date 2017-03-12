@@ -1,7 +1,10 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import Validator from 'ember-loopback-auth-demo/mixins/model-validator';
+import strength from 'password-strength';
 
 const { Model, attr } = DS;
+const { computed } = Ember;
 
 /**
  * A simple user model.
@@ -25,6 +28,19 @@ export default Model.extend(Validator, {
   /** @type {String} */
   passwordConfirmation: attr('string'),
 
+  // =properties
+
+  /**
+   * Password strength report as returned by
+   * [zxcvbn](https://github.com/dropbox/zxcvbn).
+   *
+   * @type {Object}
+   */
+  passwordStrength: computed('password', function () {
+    const password = this.get('password');
+    return password && strength(password);
+  }),
+
   // =validations
 
   /**
@@ -46,6 +62,24 @@ export default Model.extend(Validator, {
       presence: true,
       length: {
         minimum: 10
+      },
+      custom: {
+        validation(key, value, model) {
+          return (model.get('passwordStrength.score') || 0) > 1;
+        },
+        message(key, value, model) {
+          if (value) {
+            const {
+              warning,
+              suggestions
+            } = model.get('passwordStrength.feedback');
+            let message = `${warning}.`;
+            for (let i = 0; i < suggestions.length; i++) {
+              message = `${message} ${suggestions[i]}`;
+            }
+            return message;
+          }
+        }
       }
     },
     passwordConfirmation: {

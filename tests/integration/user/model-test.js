@@ -61,7 +61,15 @@ test('it nulls password and passwordConfirmation on save success', function (ass
 
     var saved = user.save();
 
-    deferred.resolve({ id: 123 });
+    deferred.resolve({
+      id: 123,
+      data: {
+        type: 'user',
+        attributes: {
+          password: 'OMG server returned a password accidentally!'
+        }
+      }
+    });
     saved.then(function () {
       assert.ok(true, 'save operation was resolved');
       assert.equal(user.get('password'), null);
@@ -84,7 +92,7 @@ test('it nulls password and passwordConfirmation on save failure', function (ass
 
     deferred.reject();
     saved.then(function () {
-      assert.ok(true, 'save operation was resolved');
+      assert.ok(true, 'save operation was rejected');
       assert.equal(user.get('password'), null);
       assert.equal(user.get('passwordConfirmation'), null);
     });

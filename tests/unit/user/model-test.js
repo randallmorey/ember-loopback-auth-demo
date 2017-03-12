@@ -14,6 +14,25 @@ test('it exists', function (assert) {
   assert.ok(!!model);
 });
 
+test('it has a `passwordStrength` property that returns a strength report object', function (assert) {
+  const model = this.subject();
+  run(() => {
+    model.set('password', 'foobar123');
+    const {
+      guesses,
+      score,
+      feedback: {
+        warning,
+        suggestions: [suggestion]
+      }
+    } = model.get('passwordStrength');
+    assert.equal(guesses, 101400);
+    assert.equal(score, 1);
+    assert.equal(warning, 'This is similar to a commonly used password');
+    assert.equal(suggestion, 'Add another word or two. Uncommon words are better.');
+  });
+});
+
 test('it passes validation if validations are satisfied', function (assert) {
   const model = this.subject();
   // let store = this.store();

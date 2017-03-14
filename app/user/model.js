@@ -78,11 +78,14 @@ export default Model.extend(Validator, {
               warning,
               suggestions
             } = model.get('passwordStrength.feedback');
-            let message = `${warning}.`;
-            for (let i = 0; i < suggestions.length; i++) {
-              message = `${message} ${suggestions[i]}`;
+            let message = [];
+            if (warning) {
+              message.push(`${warning}.`);
             }
-            return message;
+            for (let i = 0; i < suggestions.length; i++) {
+              message.push(suggestions[i]);
+            }
+            return message.join(' ');
           }
         }
       }

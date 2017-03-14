@@ -33,6 +33,25 @@ test('it has a `passwordStrength` property that returns a strength report object
   });
 });
 
+test('it has a `passwordStrength` property that returns a strength report object which sometimes has no `warning` feedback', function (assert) {
+  const model = this.subject();
+  run(() => {
+    model.set('password', 'foo');
+    const {
+      guesses,
+      score,
+      feedback: {
+        warning,
+        suggestions: [suggestion]
+      }
+    } = model.get('passwordStrength');
+    assert.equal(guesses, 1001);
+    assert.equal(score, 0);
+    assert.equal(warning, '');
+    assert.equal(suggestion, 'Add another word or two. Uncommon words are better.');
+  });
+});
+
 test('it passes validation if validations are satisfied', function (assert) {
   const model = this.subject();
   // let store = this.store();
@@ -109,6 +128,12 @@ test('it fails validation if password is not strong enough', function (assert) {
     assert.notOk(model.validate());
     const errors = model.get('errors').errorsFor('password');
     assert.equal(errors[0].message[0], 'Sequences like abc or 6543 are easy to guess. Add another word or two. Uncommon words are better. Avoid sequences');
+  });
+  run(() => {
+    model.set('password', 'foo');
+    assert.notOk(model.validate());
+    const errors = model.get('errors').errorsFor('password');
+    assert.equal(errors[1].message[0], 'Add another word or two. Uncommon words are better.');
   });
 });
 

@@ -13,6 +13,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
+  this.route('users/new', {path: 'registration'});
 });
 
 export default Router;

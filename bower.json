@@ -1,6 +1,7 @@
 {
   "name": "ember-loopback-auth-demo",
   "dependencies": {
-    "zxcvbn": "^4.4.2"
+    "zxcvbn": "^4.4.2",
+    "bootstrap": "~v4.0.0-alpha.4"
   }
 }

@@ -1,0 +1,40 @@
+<form {{action 'saveUser' on='submit'}}>
+
+  <div class="form-group{{if user.errors.email ' has-danger'}}">
+    <label for='email' class='form-control-label'>Email</label>
+    {{input type='email' class=(concat 'form-control' (if user.errors.email ' form-control-danger')) aria-describedby='emailHelp' name='email' value=user.email}}
+    {{#each user.errors.email as |error|}}
+      <div class="form-control-feedback">{{error.message}}</div>
+    {{/each}}
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div><!-- /.form-group -->
+
+  <div class="form-group{{if user.errors.emailConfirmation ' has-danger'}}">
+    <label for='emailConfirmation' class='form-control-label'>Confirm Email</label>
+    {{input type='email' class=(concat 'form-control' (if user.errors.emailConfirmation ' form-control-danger')) aria-describedby='emailConfirmationHelp' name='emailConfirmation' value=user.emailConfirmation}}
+    {{#each user.errors.emailConfirmation as |error|}}
+      <div class="form-control-feedback">{{error.message}}</div>
+    {{/each}}
+    <small id="emailConfirmationHelp" class="form-text text-muted">Please enter your email again to confirm.</small>
+  </div><!-- /.form-group -->
+
+  <div class="form-group{{if user.errors.password ' has-danger'}}">
+    <label for='password' class='form-control-label'>Password</label>
+    {{input type='password' class=(concat 'form-control' (if user.errors.password ' form-control-danger')) aria-describedby='passwordHelp' name='password' value=user.password}}
+    {{#each user.errors.password as |error|}}
+      <div class="form-control-feedback">{{error.message}}</div>
+    {{/each}}
+    <small id="passwordHelp" class="form-text text-muted">Your password must contain 10 or more characters.  Numbers and special characters are allowed, but not required.  Memorable phrases of four or more words make strong passwords.</small>
+  </div><!-- /.form-group -->
+
+  <div class="form-group{{if user.errors.passwordConfirmation ' has-danger'}}">
+    <label for='passwordConfirmation' class='form-control-label'>Confirm Password</label>
+    {{input type='password' class=(concat 'form-control' (if user.errors.passwordConfirmation ' form-control-danger')) aria-describedby='passwordConfirmationHelp' name='passwordConfirmation' value=user.passwordConfirmation}}
+    {{#each user.errors.passwordConfirmation as |error|}}
+      <div class="form-control-feedback">{{error.message}}</div>
+    {{/each}}
+    <small id="passwordConfirmationHelp" class="form-text text-muted">Please enter your password again to confirm.</small>
+  </div><!-- /.form-group -->
+
+  <button type="submit">Register</button>
+</form>

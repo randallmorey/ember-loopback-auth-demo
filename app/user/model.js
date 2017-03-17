@@ -36,9 +36,9 @@ export default Model.extend(Validator, {
    *
    * @type {Object}
    */
-  passwordStrength: computed('password', function () {
-    const password = this.get('password');
-    return password && strength(password);
+  passwordStrength: computed('email', 'password', function () {
+    const { email, password } = this.getProperties('email', 'password');
+    return password && strength(password, [email]);
   }),
 
   // =validations

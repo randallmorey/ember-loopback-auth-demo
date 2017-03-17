@@ -137,6 +137,20 @@ test('it fails validation if password is not strong enough', function (assert) {
   });
 });
 
+test('it fails validation if password is not strong enough because it contains the email address', function (assert) {
+  const model = this.subject();
+  // let store = this.store();
+  run(() => {
+    model.set('email', 'test@foo.com');
+    model.set('emailConfirmation', 'test@foo.com');
+    model.set('password', 'test@foo.com');
+    model.set('passwordConfirmation', 'test@foo.com');
+    assert.notOk(model.validate());
+    const errors = model.get('errors').errorsFor('password');
+    assert.equal(errors[0].message[0], 'Add another word or two. Uncommon words are better.');
+  });
+});
+
 test('it fails validation if passwordConfirmation does not match password', function (assert) {
   const model = this.subject();
   // let store = this.store();

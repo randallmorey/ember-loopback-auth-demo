@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import ENV from 'ember-loopback-auth-demo/config/environment';
+import config from './config/environment';
 
 /**
  * The application adapter interacts with a JSON API server.
@@ -14,11 +14,11 @@ export default DS.JSONAPIAdapter.extend({
    * @override
    * @type {String}
    */
-  host: ENV.api.host,
+  host: config.api.host,
 
   /**
    * @override
    * @type {String}
    */
-  namespace: ENV.api.namespace
+  namespace: config.api.namespace
 });

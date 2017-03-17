@@ -11,7 +11,7 @@ moduleForComponent('user/user-form', 'Integration | Component | user/user form',
 test('it renders with a new empty user model', function (assert) {
   run(() => {
     this.set('user', {});
-    this.render(hbs`{{user/user-form model=user}}`);
+    this.render(hbs`{{user/user-form user=user}}`);
     assert.equal(this.$('[name="email"]:visible').length, 1);
     assert.equal(this.$('[name="emailConfirmation"]:visible').length, 1);
     assert.equal(this.$('[name="password"]:visible').length, 1);
@@ -27,7 +27,7 @@ test('it renders with a new filled user model', function (assert) {
       password: 'password1234',
       passwordConfirmation: 'password1234'
     });
-    this.render(hbs`{{user/user-form model=user}}`);
+    this.render(hbs`{{user/user-form user=user}}`);
     assert.equal(this.$('[name="email"]:visible').val(), 'test@foo.com');
     assert.equal(this.$('[name="emailConfirmation"]:visible').val(), 'test@foo.com');
     assert.equal(this.$('[name="password"]:visible').val(), 'password1234');
@@ -39,7 +39,7 @@ test('it updates underlaying instance based on user input', function (assert) {
   run(() => {
     let user = {};
     this.set('user', user);
-    this.render(hbs`{{user/user-form model=user}}`);
+    this.render(hbs`{{user/user-form user=user}}`);
     // fill out the form and force an onchange
     this.$('[name="email"]').val('test@foo.com');
     this.$('[name="email"]').change();
@@ -67,7 +67,7 @@ test('it renders validation error messages', function (assert) {
       passwordConfirmation: 'passfoo'
     });
     this.set('user', user);
-    this.render(hbs`{{user/user-form model=user}}`);
+    this.render(hbs`{{user/user-form user=user}}`);
     user.validate();
   });
   run(() => {
@@ -95,7 +95,7 @@ test('it triggers the external save action on submit', function (assert) {
       assert.equal(savedUser.get('password'), 'this is a simple passphrase');
       assert.equal(savedUser.get('passwordConfirmation'), 'this is a simple passphrase');
     });
-    this.render(hbs`{{user/user-form model=user save=(action externalSave)}}`);
+    this.render(hbs`{{user/user-form user=user save=(action externalSave)}}`);
     // fill out the form and force an onchange
     this.$('[name="email"]').val('test@foo.com');
     this.$('[name="email"]').change();

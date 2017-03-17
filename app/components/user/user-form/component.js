@@ -22,7 +22,7 @@ export default Ember.Component.extend({
      * @returns {undefined}
      */
     submit() {
-      this.get('save')(this.get('model'));
+      this.get('save')(this.get('user'));
     }
   }
 });

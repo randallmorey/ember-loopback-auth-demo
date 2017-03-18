@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import config from './config/environment';
+import config from '../config/environment';
 
 /**
  * The application adapter interacts with a JSON API server.

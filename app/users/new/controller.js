@@ -5,7 +5,7 @@ import Ember from 'ember';
  * and post-success redirect.
  *
  * @module
- * @augments ember/Route
+ * @augments ember/Controller
  */
 export default Ember.Controller.extend({
   // =actions

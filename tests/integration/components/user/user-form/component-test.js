@@ -83,7 +83,23 @@ test('it renders validation error messages', function (assert) {
   });
 });
 
-test('it triggers the external save action on submit', function (assert) {
+// ===
+test('its `submit` action calls `validate` on the user instance', function (assert) {
+  assert.expect(1);
+  let user = {
+    validate() {
+      assert.ok(true, 'user.validate() was called');
+      return false;
+    }
+  };
+  this.set('user', user);
+  this.render(hbs`{{user/user-form user=user}}`);
+  // submit form
+  this.$('button[type="submit"]').click();
+});
+// ===
+
+test('it triggers the external save action on submit if the user instance is valid', function (assert) {
   run(() => {
     const store = this.container.lookup('service:store');
     let user = store.createRecord('user', {});

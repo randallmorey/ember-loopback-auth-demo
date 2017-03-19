@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
   /** @type {Object} */
   actions: {
     /**
-     * Validates the user instance.  If valid, saves the user.
+     * Saves the passed user instance.
      * If save is successful, redirects to the `application` route.
      * If save fails, does nothing.
      *
@@ -22,11 +22,9 @@ export default Ember.Controller.extend({
      * @returns {undefined}
      */
     saveUser(user) {
-      if (user.validate()) {
-        user.save().then(() => {
-          this.transitionToRoute('application');
-        });
-      }
+      user.save().then(() => {
+        this.transitionToRoute('application');
+      });
     }
   }
 });

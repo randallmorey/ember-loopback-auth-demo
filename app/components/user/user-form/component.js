@@ -15,13 +15,16 @@ export default Ember.Component.extend({
   actions: {
     /**
      * Trigger a bound `save` method when the form is submitted, passing the
-     * form's model instance.
+     * form's user instance *if* the user instance is valid.
      *
      * @function actions:submit
      * @returns {undefined}
      */
     submit() {
-      this.get('save')(this.get('user'));
+      const user = this.get('user');
+      if (user.validate()) {
+        this.get('save')(user);
+      }
     }
   }
 });

@@ -14,29 +14,10 @@ test('it exists', function (assert) {
   assert.ok(controller);
 });
 
-test('its `saveUser` action calls `validate` on the passed user instance', function (assert) {
+test('its `saveUser` action calls `save` on the passed user instance', function (assert) {
   assert.expect(1);
   let controller = this.subject();
   let user = {
-    validate() {
-      assert.ok(true, 'user.validate() was called');
-      return false;
-    },
-    save() {
-      assert.notOk(true, 'user.save() should not be called');
-    }
-  };
-  controller.send('saveUser', user);
-});
-
-test('its `saveUser` action calls `save` on the passed user instance if `validate` returns true', function (assert) {
-  assert.expect(2);
-  let controller = this.subject();
-  let user = {
-    validate() {
-      assert.ok(true, 'user.validate() was called');
-      return true;
-    },
     save() {
       assert.ok(true, 'user.save() was called');
       return {

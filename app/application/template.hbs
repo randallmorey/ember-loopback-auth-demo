@@ -1,4 +1,14 @@
 <div class="container">
   <h1>App</h1>
+  <nav>
+    <ul>
+      <li>
+        {{link-to 'home' 'application'}}
+      </li>
+      <li>
+        {{link-to 'registration' 'users/new'}}
+      </li>
+    </ul>
+  </nav>
   {{outlet}}
 </div><!-- /.container -->

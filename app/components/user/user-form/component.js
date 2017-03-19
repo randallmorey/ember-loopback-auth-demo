@@ -4,8 +4,7 @@ import Ember from 'ember';
  * A simple user form component with fields for {@link module:app/user/model}.
  *
  * @module
- * @augments ember-data/Model
- * @augments ember-loopback-auth-demo/mixins/model-validator
+ * @augments ember/Component
  * @example
  *  {{user/user-form model=user save=(action externalSave)}}
  */

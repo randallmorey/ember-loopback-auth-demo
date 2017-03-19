@@ -95,26 +95,5 @@ export default Model.extend(Validator, {
         attr: 'password'
       }
     }
-  },
-
-  // =methods
-
-  /**
-   * Overrides default `save` method to guarantee that `password` and
-   * `passwordConfirmation` fields are nulled after save, regardess of success.
-   *
-   * @override
-   * @function
-   * @returns {Promise}
-   */
-  save() {
-    const saved = this._super(...arguments);
-    saved.finally(() => {
-      this.setProperties({
-        password: null,
-        passwordConfirmation: null
-      });
-    });
-    return saved;
   }
 });

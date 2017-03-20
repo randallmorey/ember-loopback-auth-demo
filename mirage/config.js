@@ -1,4 +1,5 @@
 import config from '../config/environment';
+import { Response } from 'ember-cli-mirage';
 
 export default function () {
 
@@ -27,4 +28,26 @@ export default function () {
   */
 
   this.post('/users');
+  this.post('/users/login', function (schema, request) {
+    const credentials = JSON.parse(request.requestBody);
+    const user = schema.users.findBy(credentials);
+    if (user) {
+      return new Response(200, {
+        id: 'token-id-string',
+        ttl: 1209600,
+        created: '2000-01-01T00:00:00.000Z',
+        userId: 'user-id-string'
+      });
+    } else {
+      return new Response(401, {
+        errors: [{
+          status: 401,
+          source: '',
+          title: 'Error',
+          code: 'LOGIN_FAILED',
+          detail: 'login failed'
+        }]
+      });
+    }
+  });
 }

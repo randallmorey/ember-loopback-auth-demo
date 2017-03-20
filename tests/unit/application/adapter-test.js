@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import ENV from '../../../config/environment';
+import config from '../../../config/environment';
 
 moduleFor('adapter:application', 'Unit | Adapter | application', {
   // Specify the other units that are required for this test.
@@ -14,10 +14,10 @@ test('it exists', function (assert) {
 
 test('its `host` attribute is derived through app config', function (assert) {
   const adapter = this.subject();
-  assert.equal(adapter.get('host'), ENV.api.host);
+  assert.equal(adapter.get('host'), config.api.host);
 });
 
 test('its `namspace` attribute is derived from app config', function (assert) {
   const adapter = this.subject();
-  assert.equal(adapter.get('namspace'), ENV.api.namspace);
+  assert.equal(adapter.get('namspace'), config.api.namspace);
 });

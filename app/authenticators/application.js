@@ -14,5 +14,5 @@ export default Loopback.extend({
    * @override
    * @type {String}
    */
-  loginEndpoint: config.api.host + config.api.namespace + '/users/login'
+  loginEndpoint: config.api.host + '/' + config.api.namespace + '/users/login'
 });

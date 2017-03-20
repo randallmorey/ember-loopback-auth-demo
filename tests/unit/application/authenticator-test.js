@@ -14,5 +14,5 @@ test('it exists', function (assert) {
 
 test('its `loginEndpoint` attribute is derived through app config', function (assert) {
   const authenticator = this.subject();
-  assert.equal(authenticator.get('loginEndpoint'), config.api.host + config.api.namespace + '/users/login');
+  assert.equal(authenticator.get('loginEndpoint'), config.api.host + '/' + config.api.namespace + '/users/login');
 });

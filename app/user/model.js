@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import Validator from 'ember-loopback-auth-demo/mixins/model-validator';
+import Validator from 'ember-model-validator/mixins/model-validator';
 import strength from 'password-strength';
 
 const { Model, attr } = DS;
@@ -11,7 +11,7 @@ const { computed } = Ember;
  *
  * @module
  * @augments ember-data/Model
- * @augments ember-loopback-auth-demo/mixins/model-validator
+ * @augments ember-model-validator/mixins/model-validator
  */
 export default Model.extend(Validator, {
   // =attributes

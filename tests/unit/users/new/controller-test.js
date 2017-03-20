@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
-const { Promise } = Ember.RSVP;
+const { RSVP: { Promise } } = Ember;
 
 moduleFor('controller:users/new', 'Unit | Controller | users/new', {
   // Specify the other units that are required for this test.
@@ -41,9 +41,7 @@ test('its `saveUser` action transitions to the `application` route if the user i
       return true;
     },
     save() {
-      return new Promise(function (resolve) {
-        resolve();
-      });
+      return Promise.resolve();
     }
   };
   controller.send('saveUser', user);

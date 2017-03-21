@@ -1,0 +1,26 @@
+<form {{action 'submit' on='submit'}}>
+
+  <div class="form-group{{if user.errors.email ' has-danger'}}">
+    <label for='email' class='form-control-label'>Email</label>
+    {{input type='email' class=(concat 'form-control' (if user.errors.email ' form-control-danger')) id='email' name='email' value=user.email}}
+    {{#each user.errors.email as |error|}}
+      <div class="form-control-feedback">{{error.message}}</div>
+    {{/each}}
+  </div><!-- /.form-group -->
+
+  <div class="form-group{{if user.errors.password ' has-danger'}}">
+    <label for='password' class='form-control-label'>Password</label>
+    {{input type='password' class=(concat 'form-control' (if user.errors.password ' form-control-danger')) id='password' name='password' value=user.password}}
+    {{#each user.errors.password as |error|}}
+      <div class="form-control-feedback">{{error.message}}</div>
+    {{/each}}
+  </div><!-- /.form-group -->
+
+  {{#each user.errors.base as |error|}}
+    <div class="form-group{{if user.errors.base ' has-danger'}}">
+      <div class="form-control-feedback">{{error.message}}</div>
+    </div><!-- /.form-group -->
+  {{/each}}
+
+  <button type="submit">Login</button>
+</form>

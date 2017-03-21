@@ -28,8 +28,9 @@ export default Loopback.extend({
    * Authenticates the session with credentials from the specified user instance
    * by delegating to the `_super` method.  If authentication fails, a generic
    * error message is applied to the user model instance's base field.
-   * It is recommended to use a disposable, unsaved user instance that is
-   * disposed of after successful authentication.
+   * It is recommended to use a disposable, unsaved user instance and to
+   * destroy it after a successful authentication, or upon navigating away from
+   * the route used for login.
    *
    * @see module:ember-simple-auth-loopback/authenticators/loopback~authenticate
    * @override

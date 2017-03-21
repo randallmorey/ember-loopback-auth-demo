@@ -6,7 +6,7 @@ import Ember from 'ember';
  * @module
  * @augments ember/Component
  * @example
- *  {{user/login-form user=model save=(action externalSave)}}
+ *  {{user/login-form user=model login=(action externalLogin)}}
  */
 export default Ember.Component.extend({
   // =actions

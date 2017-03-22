@@ -43,9 +43,7 @@ export default Loopback.extend({
     const { email, password } = user.getProperties('email', 'password');
     const promise = this._super(email, password, scope);
     promise.catch(() => {
-      const recordForErrors = user.adapterDidInvalidate ?
-        user : user._internalModel;
-      this.get('store').recordWasInvalid(recordForErrors, {
+      user.pushErrors({
         base: ['login failed']
       });
     });

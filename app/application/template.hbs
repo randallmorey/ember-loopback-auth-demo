@@ -3,13 +3,19 @@
   <nav>
     <ul>
       <li>
-        {{link-to 'home' 'application'}}
+        {{link-to 'home' 'application' class='link-application'}}
       </li>
+      {{#unless session.isAuthenticated}}
+        <li>
+          {{link-to 'registration' 'users/new' class='link-registration'}}
+        </li>
+      {{/unless}}
       <li>
-        {{link-to 'registration' 'users/new'}}
-      </li>
-      <li>
-        {{link-to 'login' 'users/authenticate'}}
+        {{#if session.isAuthenticated}}
+          <a {{action 'invalidateSession'}} url="#"  class="link-session-invalidation">Logout</a>
+        {{else}}
+          {{link-to 'login' 'users/authenticate' class='link-authenticate'}}
+        {{/if}}
       </li>
     </ul>
   </nav>

@@ -10,6 +10,14 @@ test('visiting /registration', function (assert) {
   });
 });
 
+test('navigating to /registration', function (assert) {
+  visit('/');
+  click('.link-registration');
+  andThen(function () {
+    assert.equal(currentURL(), '/registration');
+  });
+});
+
 test('viewing validation errors', function (assert) {
   visit('/registration');
   andThen(function () {

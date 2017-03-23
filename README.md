@@ -1,4 +1,5 @@
 # ember-loopback-auth-demo
+
 [![Travis](https://img.shields.io/travis/randallmorey/ember-loopback-auth-demo.svg?style=flat-square)](https://travis-ci.org/randallmorey/ember-loopback-auth-demo)
 [![Coveralls](https://img.shields.io/coveralls/randallmorey/ember-loopback-auth-demo.svg?style=flat-square)](https://coveralls.io/github/randallmorey/ember-loopback-auth-demo)
 [![David](https://img.shields.io/david/dev/randallmorey/ember-loopback-auth-demo.svg?style=flat-square)](https://github.com/randallmorey/ember-loopback-auth-demo)

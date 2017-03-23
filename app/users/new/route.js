@@ -1,12 +1,14 @@
 import Ember from 'ember';
+import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
 /**
  * The registration route displays the new user form.
  *
  * @module
  * @augments ember/Route
+ * @augments ember-simple-auth/mixins/unauthenticated-route-mixin
  */
-export default Ember.Route.extend({
+export default Ember.Route.extend(UnauthenticatedRouteMixin, {
   // =methods
 
   /**

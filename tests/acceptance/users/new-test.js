@@ -1,5 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ember-loopback-auth-demo/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'ember-loopback-auth-demo/tests/helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | users/new');
 
@@ -15,6 +16,14 @@ test('navigating to /registration', function (assert) {
   click('.link-registration');
   andThen(function () {
     assert.equal(currentURL(), '/registration');
+  });
+});
+
+test('navigating to /registration redirects to root / when authenticated', function (assert) {
+  authenticateSession(this.application);
+  visit('/registration');
+  andThen(function () {
+    assert.equal(currentURL(), '/');
   });
 });
 

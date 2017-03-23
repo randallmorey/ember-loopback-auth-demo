@@ -13,7 +13,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember exam --split 3 --parallel",
-    "test-with-coverage": "COVERAGE=true npm test && ember coverage-merge && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf coverage coverage_* testem-* if-you-need-*"
+    "test-with-coverage": "COVERAGE=true npm test && ember coverage-merge && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
